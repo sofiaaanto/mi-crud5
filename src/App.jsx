@@ -21,7 +21,7 @@ function App() {
  } else {
  setItems([...item, { id: Date.now(), value }]);
  }
- };
+ }; 
  const deleteItem = (id) => {
  setItems(item.filter(item => item.id !==id));
  };
