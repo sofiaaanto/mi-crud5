@@ -4,61 +4,57 @@ import List from './components/List';
 import './App.css';
 
 function App() {
-  // Estado para almacenar la lista de ítems
-  const [item, setItems] = useState([]);
+  // Estado para la lista de evaluaciones, se inicializa leyendo de localStorage
+  const [items, setItems] = useState(() => {
+    const saved = localStorage.getItem('items');
+    return saved ? JSON.parse(saved) : [];
+  });
 
-  // Estado para saber si se está editando un ítem existente
+  // Estado para la evaluación que se está editando
   const [itemToEdit, setItemToEdit] = useState(null);
 
-  // useEffect que se ejecuta solo una vez al cargar la app
-  // Recupera los ítems almacenados previamente en localStorage
+  // Guarda en localStorage cada vez que items cambie
   useEffect(() => {
-    const storedItems = JSON.parse(localStorage.getItem('items')) || [];
-    setItems(storedItems);
-  }, []);
+    localStorage.setItem('items', JSON.stringify(items));
+  }, [items]);
 
-  // useEffect que se ejecuta cada vez que cambia "item"
-  // Guarda los ítems en localStorage para mantenerlos persistentes
-  useEffect(() => {
-    localStorage.setItem('items', JSON.stringify(item));
-  }, [item]);
-
-  // Función para agregar un nuevo ítem o actualizar uno existente
+  // Función para agregar o actualizar una evaluación
   const addOrUpdateItem = (value) => {
     if (itemToEdit) {
-      // Si hay un ítem para editar, lo actualiza en la lista
-      setItems(item.map(item => item.id === itemToEdit.id ? { ...item, value } : item));
-      setItemToEdit(null); // Limpia el estado de edición
+      setItems(items.map(item => 
+        item.id === itemToEdit.id ? { ...item, value } : item
+      ));
+      setItemToEdit(null);
     } else {
-      // Si no hay ítem para editar, crea uno nuevo con id único
-      setItems([...item, { id: Date.now(), value }]);
+      setItems([...items, { id: Date.now(), value }]);
     }
   };
 
-  // Función para eliminar un ítem por su id
+  // Eliminar evaluación por id
   const deleteItem = (id) => {
-    setItems(item.filter(item => item.id !== id));
+    setItems(items.filter(item => item.id !== id));
   };
 
-  // Función que establece qué ítem será editado (al hacer clic en "editar")
+  // Preparar evaluación para editar
   const editItem = (item) => {
     setItemToEdit(item);
   };
 
-  // Renderiza la interfaz con el formulario y la lista de ítems
   return (
-    <div className="App">
-      <h1>CRUD con LocalStorage</h1>
-      <Form
-        addOrUpdateItem={addOrUpdateItem}
-        itemToEdit={itemToEdit}
-      />
-      <List
-        items={item}
-        deleteItem={deleteItem}
-        editItem={editItem}
-      />
-    </div>
+    <>
+      <div className="frame titulo-container">
+        <h1>Evaluación de Alumnos</h1>
+      </div>
+
+      <div className="frame form-container">
+        <h2>Agregar Nueva Evaluación</h2>
+        <Form addOrUpdateItem={addOrUpdateItem} itemToEdit={itemToEdit} />
+      </div>
+
+      <div className="frame lista-container">
+        <List items={items} deleteItem={deleteItem} editItem={editItem} />
+      </div>
+    </>
   );
 }
 

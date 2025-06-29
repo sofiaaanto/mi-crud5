@@ -1,42 +1,156 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f5f7fa;
+  margin: 0;
+  padding: 20px;
+
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; /* Puedes usar center si quieres centrar también verticalmente */
+  min-height: 100vh;
+
+}
+
+h1 {
+  font-size: 2em;
+  margin-bottom: 20px;
+  font-size: xx-large;
+  text-align: center;
+  font-weight: bold;
+}
+
+h2 {
+  font-size: 1.6em;
+  margin-bottom: 10px;
+  text-align: center;
+}
+.form-container {
+  background: rgb(254, 254, 254);
+  padding: 20px;
+  border-radius: 12px;
+  width: 400px;
+  margin: auto;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.form-container input {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 8px;
+  border: 1px solid #fcefef;
+}
+
+.form-container button {
+  background-color: #2563eb;
+  color: white;
+  padding: 10px;
+  border: none;
+  width: 100%;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.evaluaciones {
+  background: white;
+  width: 600px;
+  margin: 20px auto;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
   text-align: center;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.evaluacion-card {
+  background: rgba(229, 229, 229, 0.893);
+  width: 500px;
+  margin: 20px auto;
+  padding: 20px;
+  border-radius: 12px;
+  text-align: left;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.evaluacion-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(242, 242, 242, 0.663);
+  padding: 16px;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  margin-bottom: 16px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.info {
+  flex: 1;
 }
 
-.card {
-  padding: 2em;
+.acciones {
+  display: flex;
+  gap: 10px;
 }
 
-.read-the-docs {
-  color: #888;
+.editar {
+  background-color: #facc15;
+  color: rgb(255, 255, 255);
+  padding: 8px 12px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.eliminar {
+  background-color: #ef4444;
+  color: white;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+
+.destacado {
+  display: inline-block;
+  margin-top: 8px;
+  background-color: #e0f2fe; /* Celeste claro, más suave */
+  color: #0369a1; /* Azul suave y legible */
+  font-weight: 600;
+  padding: 6px 12px;
+  border-radius: 999px; /* Muy redondeado (tipo "pastilla") */
+  font-size: 0.9rem;
+}
+
+
+/* Contenedor del título */
+
+.titulo-container {
+  background-color: white;
+  padding: 20px;
+  margin: 20px auto;
+  width: 400px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  text-align: center;
+  height: 80px; 
+}
+
+
+/* Caja principal con el formulario y la lista */
+.App {
+  background: rgb(255, 254, 254);
+  width: 800px;
+  margin: 0 auto 40px auto;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  text-align: left;
 }
